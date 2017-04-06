@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Массивы</title>
+</head>
+<body>
+<script>
+
+// +++ Задача 1 +++
+function doubleArray(arr) {
+	return arr.concat(arr);
+}
+console.log("Задача 1");
+console.log(doubleArray([1,2,3]));
+
+// +++ Задача 2 +++
+function getLastElement(arr) {
+	return arr[arr.length - 1];
+}
+console.log("Задача 2");
+console.log(getLastElement([1,2,3,4,5]));
+
+// +++ Задача 3 +++
+function getArray(x) {
+	var arr = [];
+	for (var i = 0; i < x; i++) {
+		arr.push(i + 1);
+	}
+	return arr;
+}
+console.log("Задача 3");
+console.log(getArray(10));
+
+// +++ Задача 4 +++
+function changeCollection() {
+	var newArray = [];
+	for (var i = 0; i < arguments.length; i++) {
+		arguments[i].shift(0);
+		newArray.push(arguments[i]);
+	}
+	return newArray;
+}
+console.log("Задача 4");
+console.log(changeCollection([1,2,3]));
+console.log(changeCollection([1,2,3], ['a','b','c']));
+console.log(changeCollection(['a','b','c'], [1,2,3], [33, 22, 44, 77, 55, 88]));
+
+// +++ Задача 5 +++
+let customStr = "fnanlkdjnvlsjfn";
+
+console.log(customStr);
+
+function changeString(customStr) {
+	return customStr.split("").sort().reverse().join("");
+}
+console.log("Задача 5");
+console.log(changeString(customStr));
+
+// +++ Задача 6 +++
+function backSort(arr) {
+	return arr.sort(sortReverse);
+
+	function sortReverse(prev, next) {
+		return next - prev;
+	}
+}
+console.log("Задача 6");
+console.log(backSort([2, 4, 7, 1, -2, 10, -9]));
+
+// +++ Задача 7 +++
+function getNewArray(arr, from, to) {
+	from = from || 0;
+	to = to || arr.length;
+	return arr.slice(from, to + 1);
+}
+console.log("Задача 7");
+console.log(getNewArray([1, 2, 3, 4, 5, 6, 7]));
+console.log(getNewArray([1, 2, 3, 4, 5, 6, 7], 0, 2));
+console.log(getNewArray([1, 2, 3, 4, 5, 6, 7], 1));
+console.log(getNewArray([1, 2, 3, 4, 5, 6, 7], 1, 4));
+console.log(getNewArray([1, 2, 3, 4, 5, 6, 7], -3));
+
+// +++ Задача 8 +++
+var someArr = ['one', 2, 'three', 4],
+	someNewArr = someArr.concat(someArr);
+console.log("Задача 8");
+console.log(someNewArr);	
+
+// +++ Задача 9 +++
+var defaultArray = [1, 2, 3, 4, 5];
+defaultArray.splice(2, 2);
+
+console.log("Задача 9");
+console.log(defaultArray);
+
+// +++ Задача 10 +++
+var defaultArray2 = [1, 2, 3, 4, 5];
+defaultArray2.splice(2, 2, 'three', 'four');
+
+console.log("Задача 10");
+console.log(defaultArray2);
+
+// +++ Задача 11 +++
+var firstArray = ['I', 'learn', 'JS'];
+firstArray.splice(3, 0 , 'HTML and CSS!')
+console.log("Задача 11");
+console.log(firstArray);
+
+// +++ Задача 12 +++
+var arrForSort = [
+	[1], 
+	['a', 'b', 'c'],
+	[4, 3, 2, 1],
+	['some', 'array']
+];
+arrForSort.sort(sortByArrLength);
+
+function sortByArrLength(prev, next) {
+  return prev.length - next.length;
+}
+console.log("Задача 12");
+console.log(arrForSort);
+
+// +++ Задача 13 +++
+var anyArr = ['Some', 'new', 'array'];
+
+var copyArr = [].concat(anyArr);
+console.log("Задача 13");
+console.log(copyArr);
+
+var copyArr2 = anyArr.slice(0);
+console.log(copyArr2);
+
+// +++ Задача 14 +++
+var computers = [
+	{cpu: 'intel', info: {cores: 2, cache: 3}},
+	{cpu: 'intel', info: {cores: 4, cache: 4}},
+	{cpu: 'amd'  , info: {cores: 1, cache: 1}},
+	{cpu: 'intel', info: {cores: 3, cache: 2}},
+	{cpu: 'amd'  , info: {cores: 4, cache: 2}}
+];
+
+function sortByCores(prev, next) {
+	return prev.info['cores'] - next.info['cores'];
+}
+console.log("Задача 14");
+console.log(computers.sort(sortByCores));
+
+// +++ Задача 15 +++
+const products = [
+	{title: 'prod1', price: 5.2},
+	{title: 'prod2', price: 0.18},
+	{title: 'prod3', price: 15},
+	{title: 'prod4', price: 25},
+	{title: 'prod5', price: 18.9},
+	{title: 'prod6', price: 8},
+	{title: 'prod7', price: 19},
+	{title: 'prod8', price: 63}
+];
+
+function filterCollection(arr, priceFrom, priceTo) {
+  
+	let sortedArr = arr.slice(0).sort(sortByPrice);
+	let matchPrice = [];
+	
+	for (var i = 0, max = arr.length; i < max; i++){
+		if(arr[i]['price'] >= priceFrom && arr[i]['price'] <= priceTo) {
+			matchPrice.push(arr[i]);
+		}
+	}
+  
+	function sortByPrice(prev, next) {
+		return prev.price - next.price;
+	}
+  
+	return matchPrice;
+}
+console.log("Задача 15");
+console.log(filterCollection(products, 7, 30));
+</script>
+</body>
+</html>
